@@ -21,51 +21,43 @@ const mainSectionLeft = document.getElementById('weather-container');
 async function gerCurrentLocation() {
     const response = await fetch(URL_OBJ.CURRENT_LOCATION);
     const data = await response.json();
-
-    return `${data.city}`;
+    renderCurrentUserInfo(data.city);
 }
 
-async function renderCurrentUserInfo() {
-    const response = await fetch(URL_OBJ.CURRENT_LOCATION);
+async function renderCurrentUserInfo(cityName) {
+    const response = await fetch(`https://api.weatherbit.io/v2.0/current?city=${cityName}&days=1&units=M&lang=en&key=fd94bceee040423489f53c43355656c0`);
     const data = await response.json();
+    const dataObj = data.data[0];
+    console.log(data);
+    
 
     const template = `<div class="section-left__town-title">
-        ${data.city}, ${COUNTRY_BY_ID[data.country]}
+        ${dataObj.city_name}, ${COUNTRY_BY_ID[dataObj.country_code]}
         </div>
         <div class="section-left__day-info">
     ${DATE_OBJECT.DAY_NAMES[currentDate.getDay() - 1]} ${currentDate.getDate()} ${DATE_OBJECT.MONTH_NAMES[currentDate.getMonth()]} ${currentDate.getHours()}:${currentDate.getMinutes()}
-         </div>`;
-
-    mainSectionLeft.insertAdjacentHTML('beforeend', template);
-    renderCurrentWeatherInfo(data.city);
-}
-
-async function renderCurrentWeatherInfo(userCity) {
-    const WEATHER_URL = `https://api.weatherbit.io/v2.0/current?city=${userCity}&days=1&units=M&lang=en&key=fd94bceee040423489f53c43355656c0`;
-    const response = await fetch(WEATHER_URL);
-    const data = await response.json();
-    console.log(data);
-    const template = `<div class="section-left__today-container">
+         </div>
+         <div class="section-left__today-container">
     <div class="today-container__degree-number">
-        <p class="today-container__degree-title">${Math.ceil(data.data[0].temp)}</p>
+        <p class="today-container__degree-title">${Math.ceil(dataObj.temp)}</p>
         <p class="today-container__degree-round">°</p>
     </div>
-    <img class="today-container__cloud" src="https://www.weatherbit.io/static/img/icons/${data.data[0].weather.icon}.png" alt="">
+    <img class="today-container__cloud" src="https://www.weatherbit.io/static/img/icons/${dataObj.weather.icon}.png" alt="">
     <div class="today-container__weather-info">
-        <p class="weather-info__weather-type">${data.data[0].weather.description}</p>
-        <p class="weather-info__feels-like">FEELS LIKE: ${data.data[0].app_temp}°</p>
-        <p class="weather-info__wind">${Math.ceil(data.data[0].wind_spd)} m/s</p>
-        <p class="weather-info__humidity">HUMIDITY: ${data.data[0].rh}%</p>
+        <p class="weather-info__weather-type">${dataObj.weather.description}</p>
+        <p class="weather-info__feels-like">FEELS LIKE: ${dataObj.app_temp}°</p>
+        <p class="weather-info__wind">${Math.ceil(dataObj.wind_spd)} m/s</p>
+        <p class="weather-info__humidity">HUMIDITY: ${dataObj.rh}%</p>
     </div>
-    </div>
-    `;
-    mainSectionLeft.insertAdjacentHTML('beforeend', template);
+    </div>`;
 
-    renderFutureWeatherInfo(userCity);
+    mainSectionLeft.insertAdjacentHTML('beforeend', template);
+    renderFutureWeatherInfo(cityName);
 }
 
-async function renderFutureWeatherInfo(userCity) {
-    const WEATHER_URL = `https://api.weatherbit.io/v2.0/forecast/daily?city=${userCity}&days=4&units=M&lang=en&key=fd94bceee040423489f53c43355656c0`;
+
+async function renderFutureWeatherInfo(cityName) {
+    const WEATHER_URL = `https://api.weatherbit.io/v2.0/forecast/daily?city=${cityName}&days=4&units=M&lang=en&key=fd94bceee040423489f53c43355656c0`;
     const response = await fetch(WEATHER_URL);
     const data = await response.json();
 
@@ -94,7 +86,4 @@ async function renderFutureWeatherInfo(userCity) {
 
 
 
-renderCurrentUserInfo();
-
-
-
+gerCurrentLocation();
