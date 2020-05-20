@@ -1,0 +1,65 @@
+// мой api ключ opernWeatherMap- 5222374a57e7e33e9a56a8a632758bd7
+// пример запроса api.openweathermap.org/data/2.5/weather?q=London&appid=5222374a57e7e33e9a56a8a632758bd7
+
+// https://account.mapbox.com/ - мой api ключ  pk.eyJ1Ijoia29wdG9oaGthIiwiYSI6ImNrYWN0YjU2cTFqdjkydG1rZWloeGFjaTYifQ.ePoZ9VznPV1BoZgMp8eSTA
+
+
+// ipinfo token - 228cc3bbcd9fa3
+// пример запроса https://ipinfo.io/json?token=228cc3bbcd9fa3
+
+// weatherbit api key - fd94bceee040423489f53c43355656c0
+//пример запрос https://api.weatherbit.io/v2.0/forecast/daily?city=Moscow&country=RU&days=3&units=S&lang=be&key=fd94bceee040423489f53c43355656c0
+//
+//
+// template - `https://api.weatherbit.io/v2.0/forecast/daily?city=${userCity}&days=3&units=M&lang=en&key=fd94bceee040423489f53c43355656c0` !!!!!!!!!
+// https://www.weatherbit.io/static/img/icons/t02d.png - урл для картинок
+
+
+
+
+
+
+
+
+
+
+
+
+
+function renderCurrentUserInfo (data) {
+    const mainSectionLeft = document.getElementById('weather-container');
+
+    const template = `<div class="section-left__town-title">
+        ${data.city}, ${COUNTRY_BY_ID[data.country]}
+        </div>
+        <div class="section-left__day-info">
+    ${DATE_OBJECT.DAY_NAMES[currentDate.getDay() - 1]} ${currentDate.getDate()} ${DATE_OBJECT.MONTH_NAMES[currentDate.getMonth()]} ${currentDate.getHours()}:${currentDate.getMinutes()}
+         </div>
+         <div class="section-left__today-container">
+    <div class="today-container__degree-number">
+        <p class="today-container__degree-title">19</p>
+        <p class="today-container__degree-round">°</p>
+    </div>
+    <img class="today-container__cloud" src="./assets/img/cloud.svg" alt="">
+    <div class="today-container__weather-info">
+        <p class="weather-info__weather-type">OVERCAST</p>
+        <p class="weather-info__feels-like">FEELS LIKE: 7</p>
+        <p class="weather-info__wind">2 m/s</p>
+        <p class="weather-info__humidity">HUMIDITY: 83%</p>
+    </div>
+    </div>`;
+
+    mainSectionLeft.innerHTML = template;
+}
+
+
+getJSONData(URL_OBJ.CURRENT_LOCATION)
+.then( data => {
+    console.log(data);
+    renderCurrentUserInfo(data);
+})
+
+
+const renderCurrentWeatherInfo = () => {
+
+}

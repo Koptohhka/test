@@ -1,0 +1,334 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    outline: none;
+}
+
+body {
+    background: url('./assets/img/bg\ 3.png') no-repeat;
+    position: relative;
+    z-index: -4;
+}
+
+fieldset {
+    border: none;
+}
+
+.body-gradient {
+    position: absolute;
+    top: 0;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(8, 15, 26, 0.59) 0%, rgba(86, 86, 131, 0.46) 100%);
+    z-index: -5;
+}
+
+.wrapper {
+    max-width: 1030px;
+    width: 100%;
+    padding: 0 20px;
+    margin: 0 auto;
+}
+
+.header {
+    padding-top: 40px;
+    margin-bottom: 57px;
+}
+
+.header__wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.header__inputs {
+    display: flex;
+    width: 223px;
+    justify-content: space-between;
+    height: 44px;
+}
+
+.header__input {
+    display: block;
+    border: none;
+    background: rgba(174, 181, 185, 0.5);
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+
+    font-size: 14px;
+    line-height: 17px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: white;
+}
+
+.inputs__reboot {
+    height: 100%;
+    width: 44px;
+    background: url('./assets/img/Intersect.svg') no-repeat;
+    background-color: rgba(174, 181, 185, 0.4);
+    background-position: 0 6px;
+    /*background-color: rgba(174, 181, 185, 0.5);*/
+}
+
+.reboot-arrow {
+    width: 20px;
+    height: 25px;
+    fill: white;
+}
+
+.inputs__select {
+    padding-left: 11px;
+    width: 71px;
+    background-color: rgba(180, 184, 187, 0.4);
+    border: none;
+
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.inputs__select::after {
+    content: "";
+    display: block;
+    border-style: solid;
+    border-width: 6px 5px 0 5px;
+    border-color: #000 transparent transparent transparent;
+    pointer-events: none;
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    z-index: 1;
+    margin-top: -3px;
+
+}
+
+.inputs__degree-button {
+    width: 88px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.F,
+.C {
+    width: 44px;
+    border: none;
+    background-color: transparent;
+    color: white;
+    font-weight: bold;
+}
+
+.F {
+    background: #4C5255;
+    border-radius: 5px 0px 0px 5px;
+    -webkit-border-radius: 5px 0px 0px 5px;
+    -moz-border-radius: 5px 0px 0px 5px;
+    -ms-border-radius: 5px 0px 0px 5px;
+    -o-border-radius: 5px 0px 0px 5px;
+}
+
+.C {
+    border-radius: 5px 0px 0px 5px;
+    -webkit-border-radius: 5px 0px 0px 5px;
+    -moz-border-radius: 5px 0px 0px 5px;
+    -ms-border-radius: 5px 0px 0px 5px;
+    -o-border-radius: 5px 0px 0px 5px;
+}
+
+.header__search-field {
+    display: flex;
+    width: 375px;
+    justify-content: space-between;
+}
+
+.search-field__input {
+    font-weight: normal;
+    text-transform: unset;
+    padding-left: 15px;
+    width: 274px;
+    height: 100%;
+    background: rgba(76, 82, 85, 0.4);
+    border: 1px solid rgba(228, 227, 227, 0.2);
+    border-radius: 5px 0px 0px 5px;
+    -webkit-border-radius: 5px 0px 0px 5px;
+    -moz-border-radius: 5px 0px 0px 5px;
+    -ms-border-radius: 5px 0px 0px 5px;
+    -o-border-radius: 5px 0px 0px 5px;
+}
+
+.search-field__search-button {
+    font-size: 14px;
+    width: 101px;
+    border-radius: 0px 5px 5px 0px;
+    -webkit-border-radius: 0px 5px 5px 0px;
+    -moz-border-radius: 0px 5px 5px 0px;
+    -ms-border-radius: 0px 5px 5px 0px;
+    -o-border-radius: 0px 5px 5px 0px;
+}
+
+
+.main {
+    color: white;
+}
+
+.main__wrapper {
+    display: flex;
+    j
+}
+
+.section-left__town-title {
+    font-size: 44px;
+    line-height: 54px;
+    text-transform: uppercase;
+    font-weight: bold;
+
+    margin-bottom: 5px;
+}
+
+.section-left__day-info {
+    font-size: 24px;
+    line-height: 29px;
+}
+
+.section-left__today-container {
+    display: flex;
+    font-weight: bold;
+    align-items: flex-end;
+
+    position: relative;
+}
+
+.today-container__degree-number {
+    position: relative;
+}
+
+.today-container__degree-title {
+    font-size: 306px;
+    /*line-height: 373px;*/
+    margin-right: 92px;
+
+    z-index: 2;
+}
+
+.today-container__degree-round {
+    position: absolute;
+    font-size: 100px;
+    line-height: 0px;
+    right: 5px;
+    top: calc(50% - 35px/2 - 79.5px);
+    z-index: 2;
+}
+
+.today-container__cloud {
+    position: absolute;
+    left: 320px;
+    top: -21px;
+}
+
+.today-container__weather-info {
+    font-size: 22px;
+    line-height: 37px;
+    padding-bottom: 70px;
+}
+
+.weather-info__weather-type {
+    text-transform: uppercase;
+}
+
+.section-left__another-days {
+    list-style: none;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.another-days__another-day {
+    position: relative;
+}
+
+.another-day__title {
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 27px;
+    text-transform: uppercase;
+}
+
+.another-day__degree {
+    font-weight: 600;
+    font-size: 80px;
+    line-height: 98px;
+}
+
+.another-day__icon {
+    position: absolute;
+    width: 50px;
+    height: 30px;
+    top: 60px;
+    right: -10px;
+}
+
+.main__section-right {
+    position: relative;
+}
+
+.section-right__map-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 375px;
+    height: 375px;
+    min-width: 375px;
+    min-height: 375px;
+    border-radius: 25px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    -ms-border-radius: 25px;
+    -o-border-radius: 25px;
+}
+
+.loader,
+.loader:after {
+  border-radius: 50%;
+  width: 10em;
+  height: 10em;
+}
+.loader {
+  margin: 60px auto;
+  font-size: 10px;
+  position: relative;
+  text-indent: -9999em;
+  border-top: 1.1em solid rgba(255, 255, 255, 0.2);
+  border-right: 1.1em solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1.1em solid rgba(255, 255, 255, 0.2);
+  border-left: 1.1em solid #ffffff;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-animation: load8 1.1s infinite linear;
+  animation: load8 1.1s infinite linear;
+}
+@-webkit-keyframes load8 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes load8 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
