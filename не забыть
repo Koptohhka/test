@@ -2,6 +2,9 @@
 // пример запроса api.openweathermap.org/data/2.5/weather?q=London&appid=5222374a57e7e33e9a56a8a632758bd7
 
 // https://account.mapbox.com/ - мой api ключ  pk.eyJ1Ijoia29wdG9oaGthIiwiYSI6ImNrYWN0YjU2cTFqdjkydG1rZWloeGFjaTYifQ.ePoZ9VznPV1BoZgMp8eSTA
+// пример запроса возможный бляяя карт - "https://api.mapbox.com/geocoding/v5/mapbox.places/-73.989,40.733.json?access_token=pk.eyJ1Ijoia29wdG9oaGthIiwiYSI6ImNrYWN0YjU2cTFqdjkydG1rZWloeGFjaTYifQ.ePoZ9VznPV1BoZgMp8eSTA"
+//
+//
 
 
 // ipinfo token - 228cc3bbcd9fa3

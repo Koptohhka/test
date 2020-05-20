@@ -12,7 +12,8 @@ import {
 
 import {
     currentDate,
-    getDayOfWeek
+    getDayOfWeek,
+    setDynamicTime
 } from '../script/utils.js';
 
 const mainSectionLeft = document.getElementById('weather-container');
@@ -28,14 +29,12 @@ async function renderCurrentUserInfo(cityName) {
     const response = await fetch(`https://api.weatherbit.io/v2.0/current?city=${cityName}&days=1&units=M&lang=en&key=fd94bceee040423489f53c43355656c0`);
     const data = await response.json();
     const dataObj = data.data[0];
-    console.log(data);
-    
 
     const template = `<div class="section-left__town-title">
         ${dataObj.city_name}, ${COUNTRY_BY_ID[dataObj.country_code]}
         </div>
         <div class="section-left__day-info">
-    ${DATE_OBJECT.DAY_NAMES[currentDate.getDay() - 1]} ${currentDate.getDate()} ${DATE_OBJECT.MONTH_NAMES[currentDate.getMonth()]} ${currentDate.getHours()}:${currentDate.getMinutes()}
+    ${DATE_OBJECT.DAY_NAMES[currentDate.getDay() - 1]} ${currentDate.getDate()} ${DATE_OBJECT.MONTH_NAMES[currentDate.getMonth()]} <span id="timer">${currentDate.getHours()}:${currentDate.getMinutes()}:${currentDate.getSeconds()}</span>
          </div>
          <div class="section-left__today-container">
     <div class="today-container__degree-number">
@@ -53,8 +52,8 @@ async function renderCurrentUserInfo(cityName) {
 
     mainSectionLeft.insertAdjacentHTML('beforeend', template);
     renderFutureWeatherInfo(cityName);
+    setInterval(setDynamicTime, 1000);
 }
-
 
 async function renderFutureWeatherInfo(cityName) {
     const WEATHER_URL = `https://api.weatherbit.io/v2.0/forecast/daily?city=${cityName}&days=4&units=M&lang=en&key=fd94bceee040423489f53c43355656c0`;
@@ -80,8 +79,6 @@ async function renderFutureWeatherInfo(cityName) {
     </ul>`;
 
     mainSectionLeft.insertAdjacentHTML('beforeend', template);
-    //console.log(data.data);
-    //console.log(getDayOfWeek(data.data[4].datetime));
 }
 
 
